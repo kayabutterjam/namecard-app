@@ -22,28 +22,25 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
-body{
-  background:var(--paper);color:var(--ink);font-family:var(--sans);
-  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
-  padding-bottom:calc(76px + env(safe-area-inset-bottom));
-}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body.has-tabs{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 .wrap{max-width:600px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;margin:0}
 .hidden{display:none !important}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 input,textarea,select{font:inherit;color:inherit}
+a{color:var(--accent)}
 
-/* ---- masthead ---- */
-.masthead{padding-top:calc(14px + env(safe-area-inset-top));padding-bottom:11px;border-bottom:1px solid var(--line);
-  background:var(--paper)}
+.masthead{padding-top:calc(14px + env(safe-area-inset-top));padding-bottom:11px;
+  border-bottom:1px solid var(--line);background:var(--paper)}
 .masthead .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .brand{font-family:var(--serif);font-size:21px;line-height:1.1;letter-spacing:-.02em}
 .brand em{font-style:italic;color:var(--accent)}
 .kicker{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);font-weight:500}
-.iconbtn{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted)}
+.iconbtn{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted);position:relative}
 .iconbtn:active{background:var(--line-soft)}
 
-/* ---- event bar ---- */
 .eventbar{background:var(--tint);border-bottom:1px solid var(--line);position:sticky;
   top:0;z-index:20;padding:11px 0}
 .eventbar .wrap{display:flex;align-items:center;gap:12px}
@@ -53,14 +50,12 @@ input,textarea,select{font:inherit;color:inherit}
   font-weight:500;color:var(--accent-deep);padding:2px 0}
 .eventbar input::placeholder{color:#8AA79A;font-weight:400}
 
-/* ---- generic ---- */
 .section{padding-top:22px;padding-bottom:22px}
 .eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);
   font-weight:600;margin-bottom:10px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
 .rule{height:1px;background:var(--line);border:0;margin:22px 0}
+.hint{font-size:12px;line-height:1.45;color:var(--faint);margin-top:5px}
 
-/* ---- capture tiles ---- */
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .shot{position:relative;aspect-ratio:1.62/1;border-radius:var(--r);border:1.5px dashed var(--line);
   background:var(--surface);display:grid;place-items:center;text-align:center;overflow:hidden;
@@ -74,11 +69,10 @@ input,textarea,select{font:inherit;color:inherit}
 .shot .ph .s{display:block;font-size:11px;color:var(--faint);margin-top:2px}
 .shot .tag{position:absolute;left:8px;top:8px;background:rgba(23,20,15,.72);color:#fff;
   font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
-  padding:3px 7px;border-radius:6px;backdrop-filter:blur(4px)}
+  padding:3px 7px;border-radius:6px}
 .shot .x{position:absolute;right:6px;top:6px;width:26px;height:26px;border-radius:50%;
   background:rgba(23,20,15,.72);color:#fff;display:grid;place-items:center;font-size:15px;line-height:1}
 
-/* ---- fields ---- */
 .field{margin-top:14px}
 .field label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--faint);font-weight:600;margin-bottom:5px}
@@ -86,9 +80,8 @@ input,textarea,select{font:inherit;color:inherit}
   border-radius:11px;padding:12px 13px;outline:0;transition:border-color .15s,box-shadow .15s}
 .field input:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--tint)}
 .field textarea{resize:vertical;min-height:66px}
-.hint{font-size:12px;line-height:1.45;color:var(--faint);margin-top:5px}
+.field input.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
 
-/* ---- buttons ---- */
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
   padding:15px 18px;border-radius:12px;font-weight:600;font-size:15px;
   transition:transform .08s,opacity .15s}
@@ -98,17 +91,16 @@ input,textarea,select{font:inherit;color:inherit}
 .btn.ghost{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
 .btn.quiet{background:transparent;color:var(--muted);font-weight:500;padding:12px}
 .btn.danger{background:var(--danger-tint);color:var(--danger)}
+.btn.small{padding:9px 14px;font-size:13px;width:auto;border-radius:9px}
 .btnrow{display:flex;gap:10px;margin-top:14px}
 .btnrow .btn{flex:1}
 
-/* ---- chips ---- */
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;
   letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:20px}
-.chip.high{background:var(--tint);color:var(--accent)}
-.chip.medium{background:var(--warn-tint);color:var(--warn)}
-.chip.low{background:var(--danger-tint);color:var(--danger)}
+.chip.high,.chip.approved{background:var(--tint);color:var(--accent)}
+.chip.medium,.chip.pending{background:var(--warn-tint);color:var(--warn)}
+.chip.low,.chip.rejected{background:var(--danger-tint);color:var(--danger)}
 
-/* ---- review ---- */
 .review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:4px}
 .review-head h2{font-size:23px;line-height:1.2}
 .prov{font-size:12px;color:var(--faint);margin-top:6px}
@@ -118,7 +110,6 @@ input,textarea,select{font:inherit;color:inherit}
 .origin .l{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:600}
 .origin .v{font-size:14px;color:var(--accent-deep);margin-top:3px;font-weight:500}
 
-/* ---- contact list ---- */
 .searchbar{position:relative;margin-bottom:4px}
 .searchbar input{width:100%;background:var(--surface);border:1px solid var(--line);
   border-radius:12px;padding:13px 15px 13px 40px;outline:0}
@@ -132,25 +123,26 @@ input,textarea,select{font:inherit;color:inherit}
 .row{display:flex;align-items:center;gap:13px;padding:13px 2px;border-bottom:1px solid var(--line-soft);
   text-align:left;width:100%}
 .row:active{background:var(--line-soft)}
-.mono{width:40px;height:40px;flex:none;border-radius:50%;background:var(--tint);color:var(--accent);
+.mono-av{width:40px;height:40px;flex:none;border-radius:50%;background:var(--tint);color:var(--accent);
   display:grid;place-items:center;font-family:var(--serif);font-size:15px;font-weight:600}
 .row .meta{min-width:0;flex:1}
 .row .nm{display:block;font-weight:600;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .sub{display:block;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.row .sub{display:block;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;margin-top:1px}
 .row .flag{flex:none;width:7px;height:7px;border-radius:50%;background:var(--warn)}
 .empty{text-align:center;padding:56px 20px;color:var(--muted)}
 .empty .glyph{display:flex;justify-content:center;color:var(--faint);opacity:.5}
 .empty h3{font-size:18px;margin:12px 0 6px}
 .empty p{font-size:14px;margin:0;color:var(--faint)}
 
-/* ---- sheet ---- */
 .scrim{position:fixed;inset:0;background:rgba(23,20,15,.34);z-index:50;
   opacity:0;pointer-events:none;transition:opacity .2s}
 .scrim.on{opacity:1;pointer-events:auto}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;background:var(--paper);
   border-radius:20px 20px 0 0;max-height:90vh;overflow-y:auto;
   padding:8px 0 calc(24px + env(safe-area-inset-bottom));
-  transform:translateY(100%);transition:transform .26s cubic-bezier(.32,.72,0,1);box-shadow:0 -8px 40px rgba(23,20,15,.16)}
+  transform:translateY(100%);transition:transform .26s cubic-bezier(.32,.72,0,1);
+  box-shadow:0 -8px 40px rgba(23,20,15,.16)}
 .sheet.on{transform:translateY(0)}
 .grip{width:38px;height:4px;border-radius:2px;background:var(--line);margin:6px auto 12px}
 .detail-name{font-family:var(--serif);font-size:24px;line-height:1.2}
@@ -163,58 +155,135 @@ input,textarea,select{font:inherit;color:inherit}
 .dl .v{flex:1;min-width:0;word-break:break-word}
 .dl a .v{color:var(--accent);font-weight:500}
 
-/* ---- tabbar ---- */
-.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(250,248,244,.92);
-  backdrop-filter:blur(12px);border-top:1px solid var(--line);
-  padding-bottom:env(safe-area-inset-bottom)}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(250,248,244,.94);
+  backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
 .tabbar .wrap{display:flex}
 .tab{flex:1;padding:11px 0 10px;display:flex;flex-direction:column;align-items:center;gap:3px;
-  color:var(--faint);font-size:11px;font-weight:600;letter-spacing:.04em}
+  color:var(--faint);font-size:11px;font-weight:600;letter-spacing:.04em;position:relative}
 .tab.on{color:var(--accent)}
 .tab .glyph{display:block;line-height:0}
+.badge{position:absolute;top:6px;right:calc(50% - 22px);min-width:17px;height:17px;border-radius:9px;
+  background:var(--danger);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;
+  padding:0 5px;letter-spacing:0}
 
-/* ---- misc ---- */
-.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));transform:translate(-50%,14px);
-  background:var(--ink);color:#fff;padding:11px 17px;border-radius:11px;font-size:14px;z-index:70;
-  max-width:88vw;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));
+  transform:translate(-50%,14px);background:var(--ink);color:#fff;padding:11px 17px;border-radius:11px;
+  font-size:14px;z-index:70;max-width:88vw;text-align:center;opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .toast.bad{background:var(--danger)}
 .spinner{width:17px;height:17px;border:2px solid rgba(255,255,255,.32);border-top-color:#fff;
   border-radius:50%;animation:spin .7s linear infinite}
+.spinner.dark{border-color:rgba(23,20,15,.2);border-top-color:var(--ink)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .banner{border-radius:11px;padding:13px 15px;font-size:13.5px;line-height:1.45;margin-bottom:16px}
 .banner.warn{background:var(--warn-tint);color:var(--warn);border:1px solid #EFDFBE}
+.banner.info{background:var(--tint);color:var(--accent-deep);border:1px solid #CFE0D6}
 .banner b{font-weight:600}
 .working{text-align:center;padding:46px 20px}
-.working .bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin:20px auto 0;max-width:220px}
+.working .bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;
+  margin:20px auto 0;max-width:220px}
 .working .bar i{display:block;height:100%;width:40%;background:var(--accent);border-radius:2px;
   animation:slide 1.1s ease-in-out infinite}
 @keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
-.login{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
+
+.centred{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
   padding-top:32px;padding-bottom:32px}
-.login .brand{font-size:34px;margin-bottom:8px}
-.login p.lede{color:var(--muted);font-size:15px;margin:0 0 26px;max-width:38ch}
+.centred .brand{font-size:34px;margin-bottom:8px}
+.lede{color:var(--muted);font-size:15px;margin:0 0 22px;max-width:40ch}
+.segmented{display:flex;background:var(--line-soft);border-radius:11px;padding:3px;margin-bottom:6px}
+.segmented button{flex:1;padding:9px;border-radius:9px;font-size:14px;font-weight:600;color:var(--muted)}
+.segmented button.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(23,20,15,.08)}
+.err{color:var(--danger);font-size:13px;margin-top:12px;line-height:1.45}
+
+.steps{counter-reset:s;margin:16px 0 0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:34px;margin-bottom:14px;font-size:14px;
+  line-height:1.5;color:var(--muted)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:23px;height:23px;
+  border-radius:50%;background:var(--tint);color:var(--accent);font-size:12px;font-weight:700;
+  display:grid;place-items:center;font-family:var(--sans)}
+.steps li b{color:var(--ink);font-weight:600}
+.steps li code{background:var(--line-soft);padding:1px 5px;border-radius:4px;font-size:12.5px}
+
+.arow{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.arow .who{flex:1;min-width:0}
+.arow .who .e{font-weight:600;font-size:14.5px;word-break:break-all}
+.arow .who .m{font-size:12.5px;color:var(--faint);margin-top:2px}
+.arow .acts{display:flex;gap:7px;flex:none}
 </style>
 </head>
 <body>
 
-<!-- ============ LOGIN ============ -->
-<div id="login" class="hidden">
-  <div class="wrap login">
+<!-- ============ AUTH ============ -->
+<div id="scr-auth" class="hidden">
+  <div class="wrap centred">
     <div class="kicker">KayaButterJam</div>
     <div class="brand">Namecard <em>Reader</em></div>
-    <p class="lede">Photograph a card, get a clean contact. Sign in to reach your list.</p>
-    <div class="field"><label for="li-email">Email</label>
-      <input id="li-email" type="email" autocomplete="username" inputmode="email" autocapitalize="off" spellcheck="false"></div>
-    <div class="field"><label for="li-pass">Password</label>
-      <input id="li-pass" type="password" autocomplete="current-password"></div>
-    <div style="margin-top:20px"><button id="li-go" class="btn primary">Sign in</button></div>
-    <div id="li-err" class="field hint hidden" style="color:var(--danger);margin-top:12px"></div>
+    <p class="lede">Photograph a business card, get a clean contact record. New accounts need approval before use.</p>
+
+    <div class="segmented">
+      <button id="seg-in" class="on" type="button">Sign in</button>
+      <button id="seg-up" type="button">Create account</button>
+    </div>
+
+    <div id="au-name-wrap" class="field hidden">
+      <label for="au-name">Your name</label>
+      <input id="au-name" autocomplete="name" autocapitalize="words">
+    </div>
+    <div class="field"><label for="au-email">Email</label>
+      <input id="au-email" type="email" autocomplete="username" inputmode="email"
+             autocapitalize="off" spellcheck="false"></div>
+    <div class="field"><label for="au-pass">Password</label>
+      <input id="au-pass" type="password" autocomplete="current-password"></div>
+    <div id="au-passhint" class="hint hidden">At least 6 characters.</div>
+
+    <div style="margin-top:20px"><button id="au-go" class="btn primary">Sign in</button></div>
+    <div id="au-err" class="err hidden"></div>
+  </div>
+</div>
+
+<!-- ============ APPROVAL GATE ============ -->
+<div id="scr-gate" class="hidden">
+  <div class="wrap centred">
+    <div class="kicker" id="gate-kicker">Awaiting approval</div>
+    <h2 id="gate-title" style="font-size:29px;margin:6px 0 10px">Your request is with the administrator</h2>
+    <p class="lede" id="gate-body"></p>
+    <div class="btnrow">
+      <button id="gate-refresh" class="btn ghost">Check again</button>
+      <button id="gate-out" class="btn quiet">Sign out</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ API KEY SETUP ============ -->
+<div id="scr-key" class="hidden">
+  <div class="wrap centred">
+    <div class="kicker">One-time setup</div>
+    <h2 style="font-size:29px;margin:6px 0 10px">Connect your Anthropic key</h2>
+    <p class="lede">Reading a card costs a fraction of a cent, billed to your own Anthropic account.
+      Your key is stored only in this browser and is sent straight to Anthropic — it never reaches
+      this app's database or servers.</p>
+
+    <ol class="steps">
+      <li>Open <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">console.anthropic.com/settings/keys</a> and sign in, creating an account if you need one.</li>
+      <li>Make sure the account has credit — <b>Billing</b> in the left sidebar. A few dollars lasts thousands of cards.</li>
+      <li>Click <b>Create Key</b>, name it something like <code>namecards</code>, and copy it. It starts with <code>sk-ant-</code> and is shown only once.</li>
+      <li>Paste it below. It is checked against Anthropic before it is saved.</li>
+    </ol>
+
+    <div class="field" style="margin-top:20px">
+      <label for="key-input">Anthropic API key</label>
+      <input id="key-input" class="mono" placeholder="sk-ant-..." autocapitalize="off"
+             autocomplete="off" spellcheck="false" type="password">
+    </div>
+    <div style="margin-top:16px"><button id="key-save" class="btn primary">Check and save</button></div>
+    <button id="key-out" class="btn quiet" style="margin-top:6px">Sign out</button>
+    <div id="key-err" class="err hidden"></div>
   </div>
 </div>
 
 <!-- ============ APP ============ -->
-<div id="app" class="hidden">
+<div id="scr-app" class="hidden">
 
   <div class="masthead">
     <div class="wrap">
@@ -233,18 +302,13 @@ input,textarea,select{font:inherit;color:inherit}
     </div>
   </div>
 
-  <!-- ---- CAPTURE ---- -->
   <div id="view-capture">
     <div class="wrap section">
       <div id="key-banner" class="banner warn hidden"></div>
       <div class="eyebrow">New card</div>
       <div class="shots">
-        <button class="shot" id="shot-front" type="button">
-          <span class="ph"><svg class="glyph" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><circle cx="8" cy="11" r="2"/><path d="M14 10h4M14 14h4M5 16.5c1-1.6 4-1.6 5 0"/></svg><span class="t">Front</span><span class="s">Required</span></span>
-        </button>
-        <button class="shot" id="shot-back" type="button">
-          <span class="ph"><svg class="glyph" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5" stroke-dasharray="3 2.5"/><path d="M6.5 10h11M6.5 13h7"/></svg><span class="t">Back</span><span class="s">If it has one</span></span>
-        </button>
+        <button class="shot" id="shot-front" type="button"></button>
+        <button class="shot" id="shot-back" type="button"></button>
       </div>
       <div class="field">
         <label for="note-input">Note for this card <span style="text-transform:none;letter-spacing:0;color:var(--faint);font-weight:400">&middot; optional</span></label>
@@ -253,11 +317,11 @@ input,textarea,select{font:inherit;color:inherit}
       <div style="margin-top:18px">
         <button id="btn-read" class="btn primary" disabled>Read this card</button>
       </div>
-      <p class="hint" style="text-align:center;margin-top:10px">Photos are stored privately in your own Supabase project.</p>
+      <p class="hint" style="text-align:center;margin-top:10px">Card images go to Anthropic from this
+        device, and are stored privately in your own folder.</p>
     </div>
   </div>
 
-  <!-- ---- WORKING ---- -->
   <div id="view-working" class="hidden">
     <div class="wrap working">
       <div class="eyebrow" style="margin-bottom:2px">Reading</div>
@@ -267,7 +331,6 @@ input,textarea,select{font:inherit;color:inherit}
     </div>
   </div>
 
-  <!-- ---- REVIEW ---- -->
   <div id="view-review" class="hidden">
     <div class="wrap section">
       <div class="review-head">
@@ -279,12 +342,10 @@ input,textarea,select{font:inherit;color:inherit}
       </div>
       <div class="prov" id="rv-prov"></div>
       <div class="thumbs" id="rv-thumbs"></div>
-
       <div class="origin">
         <div class="l">Where &amp; when</div>
         <div class="v" id="rv-origin"></div>
       </div>
-
       <hr class="rule">
       <div class="eyebrow">Fields</div>
       <div class="field"><label for="f-full_name">Name</label><input id="f-full_name"></div>
@@ -297,16 +358,14 @@ input,textarea,select{font:inherit;color:inherit}
       <div class="field"><label for="f-address">Address</label><textarea id="f-address"></textarea></div>
       <div class="field"><label for="f-capture_note">Note</label><input id="f-capture_note"></div>
       <div id="rv-other" class="hint hidden" style="margin-top:14px"></div>
-
       <div class="btnrow">
         <button id="btn-discard" class="btn ghost">Discard</button>
         <button id="btn-save" class="btn primary">Save contact</button>
       </div>
-      <button id="btn-another" class="btn quiet hidden">Save and shoot the next one</button>
+      <button id="btn-another" class="btn quiet">Save and shoot the next one</button>
     </div>
   </div>
 
-  <!-- ---- CONTACTS ---- -->
   <div id="view-list" class="hidden">
     <div class="wrap section">
       <div class="searchbar">
@@ -321,19 +380,27 @@ input,textarea,select{font:inherit;color:inherit}
     </div>
   </div>
 
-  <!-- ---- TABBAR ---- -->
+  <div id="view-admin" class="hidden">
+    <div class="wrap section">
+      <div class="eyebrow">Access requests</div>
+      <h2 style="font-size:22px;margin-bottom:6px">Who can use this app</h2>
+      <p class="hint" style="margin-bottom:6px">Approving someone lets them save their own contacts.
+        Nobody can ever see anyone else's, including you.</p>
+      <div id="admin-body"></div>
+    </div>
+  </div>
+
   <nav class="tabbar">
     <div class="wrap">
       <button class="tab on" data-tab="capture"><span class="glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.9l1.2-2h6.8l1.2 2h1.9A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.4"/></svg></span>Capture</button>
       <button class="tab" data-tab="list"><span class="glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>Contacts</button>
+      <button class="tab hidden" data-tab="admin" id="tab-admin"><span class="glyph"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.5A3.5 3.5 0 0 0 12.5 15h-6A3.5 3.5 0 0 0 3 18.5V20"/><circle cx="9.5" cy="8" r="3.5"/><path d="M17 11l2 2 4-4"/></svg></span>Admin<span id="admin-badge" class="badge hidden">0</span></button>
     </div>
   </nav>
 </div>
 
-<!-- ---- SHEET ---- -->
 <div class="scrim" id="scrim"></div>
 <div class="sheet" id="sheet"><div class="grip"></div><div class="wrap" id="sheet-body"></div></div>
-
 <div class="toast" id="toast"></div>
 
 <input type="file" accept="image/*" capture="environment" id="filepick"
@@ -348,35 +415,28 @@ var SB_KEY = "sb_publishable_-d_nAtP9iCC5jQxOU8yOuA_Aen1VYzG";
 var REST = SB_URL + "/rest/v1";
 var AUTH = SB_URL + "/auth/v1";
 var STORE = SB_URL + "/storage/v1";
-var FN = SB_URL + "/functions/v1";
-var LS_SESSION = "nc.session";
-var LS_EVENT = "nc.event";
+var ANTHROPIC = "https://api.anthropic.com/v1";
 
-var ICON_FRONT_TILE = '<span class="ph"><svg class="glyph" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><circle cx="8" cy="11" r="2"/><path d="M14 10h4M14 14h4M5 16.5c1-1.6 4-1.6 5 0"/></svg><span class="t">Front</span><span class="s">Required</span></span>';
-var ICON_BACK_TILE = '<span class="ph"><svg class="glyph" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5" stroke-dasharray="3 2.5"/><path d="M6.5 10h11M6.5 13h7"/></svg><span class="t">Back</span><span class="s">If it has one</span></span>';
+var LS_SESSION = "nc.session", LS_EVENT = "nc.event", LS_KEY = "nc.apikey", LS_MODEL = "nc.model";
+
+var ICON_FRONT = '<svg class="glyph" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><circle cx="8" cy="11" r="2"/><path d="M14 10h4M14 14h4M5 16.5c1-1.6 4-1.6 5 0"/></svg>';
+var ICON_BACK = '<svg class="glyph" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5" stroke-dasharray="3 2.5"/><path d="M6.5 10h11M6.5 13h7"/></svg>';
+var TILE_FRONT = '<span class="ph">' + ICON_FRONT + '<span class="t">Front</span><span class="s">Required</span></span>';
+var TILE_BACK = '<span class="ph">' + ICON_BACK + '<span class="t">Back</span><span class="s">If it has one</span></span>';
+var ICON_EMPTY = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><circle cx="8" cy="11" r="2"/><path d="M14 10h4M14 14h4"/></svg>';
 
 var $ = function(id){ return document.getElementById(id); };
-var session = null, contacts = [], pending = null, side = "front", shots = {front:null, back:null};
+var session = null, profile = null, contacts = [], pending = null;
+var side = "front", shots = {front:null, back:null}, authMode = "in";
 
-/* ---------------- utilities ---------------- */
+/* ---------------- small helpers ---------------- */
 
 function toast(msg, bad){
   var t = $("toast");
   t.textContent = msg;
   t.className = "toast on" + (bad ? " bad" : "");
   clearTimeout(toast._t);
-  toast._t = setTimeout(function(){ t.className = "toast"; }, bad ? 5200 : 2600);
-}
-
-function show(view){
-  ["capture","working","review","list"].forEach(function(v){
-    $("view-" + v).classList.toggle("hidden", v !== view);
-  });
-  document.querySelectorAll(".tab").forEach(function(b){
-    b.classList.toggle("on", b.dataset.tab === view);
-  });
-  $("eventbar").classList.toggle("hidden", view === "list");
-  window.scrollTo(0, 0);
+  toast._t = setTimeout(function(){ t.className = "toast"; }, bad ? 5600 : 2600);
 }
 
 function esc(s){
@@ -393,50 +453,64 @@ function initials(name){
 }
 
 function fmtDate(iso){
-  try {
-    return new Date(iso).toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"});
-  } catch(e){ return iso; }
+  try { return new Date(iso).toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"}); }
+  catch(e){ return iso; }
+}
+
+function ls(k, v){
+  try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); }
+  catch(e){ return null; }
+}
+function lsDel(k){ try { localStorage.removeItem(k); } catch(e){} }
+
+function screenTo(name){
+  ["auth","gate","key","app"].forEach(function(s){
+    $("scr-" + s).classList.toggle("hidden", s !== name);
+  });
+  document.body.classList.toggle("has-tabs", name === "app");
+  window.scrollTo(0, 0);
+}
+
+function show(view){
+  ["capture","working","review","list","admin"].forEach(function(v){
+    $("view-" + v).classList.toggle("hidden", v !== view);
+  });
+  document.querySelectorAll(".tab").forEach(function(b){
+    b.classList.toggle("on", b.dataset.tab === view);
+  });
+  $("eventbar").classList.toggle("hidden", view === "list" || view === "admin");
+  window.scrollTo(0, 0);
+}
+
+function busy(btn, on, label){
+  if (on){ btn.dataset.label = btn.textContent; btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>'; }
+  else { btn.disabled = false; btn.textContent = label || btn.dataset.label || ""; }
 }
 
 /* ---------------- session ---------------- */
 
-function saveSession(s){
-  session = s;
-  try { localStorage.setItem(LS_SESSION, JSON.stringify(s)); } catch(e){}
-}
-
+function saveSession(s){ session = s; ls(LS_SESSION, JSON.stringify(s)); }
 function loadSession(){
-  try { session = JSON.parse(localStorage.getItem(LS_SESSION) || "null"); } catch(e){ session = null; }
+  try { session = JSON.parse(ls(LS_SESSION) || "null"); } catch(e){ session = null; }
   return session;
 }
-
-function signOut(){
-  session = null;
-  try { localStorage.removeItem(LS_SESSION); } catch(e){}
-  location.reload();
-}
+function signOut(){ session = null; lsDel(LS_SESSION); location.reload(); }
 
 function authHeaders(){
-  return {
-    "apikey": SB_KEY,
-    "Authorization": "Bearer " + (session && session.access_token),
-    "Content-Type": "application/json"
-  };
+  return { "apikey": SB_KEY, "Authorization": "Bearer " + (session && session.access_token),
+           "Content-Type": "application/json" };
 }
 
 function refreshSession(){
   if (!session || !session.refresh_token) return Promise.reject(new Error("no session"));
   return fetch(AUTH + "/token?grant_type=refresh_token", {
-    method: "POST",
-    headers: {"apikey": SB_KEY, "Content-Type": "application/json"},
+    method: "POST", headers: {"apikey": SB_KEY, "Content-Type": "application/json"},
     body: JSON.stringify({refresh_token: session.refresh_token})
-  }).then(function(r){
-    if (!r.ok) throw new Error("refresh failed");
-    return r.json();
-  }).then(function(s){ saveSession(s); return s; });
+  }).then(function(r){ if (!r.ok) throw new Error("refresh failed"); return r.json(); })
+    .then(function(s){ saveSession(s); return s; });
 }
 
-/* One retry on 401 via refresh, then give up and bounce to login. */
 function api(url, opts, retried){
   opts = opts || {};
   opts.headers = Object.assign({}, authHeaders(), opts.headers || {});
@@ -449,22 +523,169 @@ function api(url, opts, retried){
   });
 }
 
-/* ---------------- image handling ---------------- */
+/* ---------------- Anthropic, called straight from this browser ---------------- */
 
-/* Downscale so uploads and vision calls stay small and fast.
-   1600px long edge is comfortably enough to read 6pt card type. */
+function aHeaders(key){
+  return {
+    "x-api-key": key,
+    "anthropic-version": "2023-06-01",
+    "anthropic-dangerous-direct-browser-access": "true",
+    "Content-Type": "application/json"
+  };
+}
+
+function apiKey(){ return ls(LS_KEY); }
+
+/* Resolve a model from the account rather than hardcoding an id that will rot. */
+function resolveModel(key, force){
+  var cached = force ? null : ls(LS_MODEL);
+  if (cached) return Promise.resolve(cached);
+  return fetch(ANTHROPIC + "/models?limit=100", {headers: aHeaders(key)}).then(function(r){
+    if (r.status === 401) throw new Error("Anthropic rejected that key.");
+    if (!r.ok) return r.text().then(function(t){
+      throw new Error("Anthropic error (HTTP " + r.status + "): " + t.slice(0, 160));
+    });
+    return r.json();
+  }).then(function(body){
+    var ids = (body.data || []).map(function(m){ return m.id; });
+    if (!ids.length) throw new Error("That key has no models available.");
+    var prefer = ["haiku-4-5","haiku-4","sonnet-4-5","sonnet-4","haiku","sonnet","opus"];
+    for (var i = 0; i < prefer.length; i++){
+      for (var j = 0; j < ids.length; j++){
+        if (ids[j].indexOf(prefer[i]) !== -1){ ls(LS_MODEL, ids[j]); return ids[j]; }
+      }
+    }
+    ls(LS_MODEL, ids[0]);
+    return ids[0];
+  });
+}
+
+var FIELD_SCHEMA = {
+  type: "object",
+  properties: {
+    full_name: {type:["string","null"], description:"Person's full name as printed, Latin script preferred."},
+    job_title: {type:["string","null"], description:"Job title or role. Not the company name."},
+    company:   {type:["string","null"], description:"Organisation name as printed on the card."},
+    phone:     {type:["string","null"], description:"Best single reachable number: mobile if present, else direct line, else main line. Keep any printed country code."},
+    phone_alt: {type:["string","null"], description:"Second useful number if the card shows one. Never a fax number unless it is the only number on the card."},
+    email:     {type:["string","null"], description:"Primary email address, lowercased."},
+    website:   {type:["string","null"], description:"Company or personal website."},
+    address:   {type:["string","null"], description:"Postal address on one line, comma separated."},
+    other:     {type:["object","null"], additionalProperties:true,
+                description:"Anything else worth keeping: name_alt or company_alt for a second-script version, department, secondary emails, fax, LinkedIn, WeChat, WhatsApp, tagline."},
+    confidence:{type:"string", enum:["high","medium","low"],
+                description:"high = every populated field plainly legible. medium = one or two inferred or partly blurred. low = hard to read, or this may not be a namecard."},
+    needs_review:{type:"boolean", description:"true when a human should check this before trusting it."}
+  },
+  required: ["full_name","job_title","company","phone","email","confidence","needs_review"],
+  additionalProperties: false
+};
+
+var SYSTEM_PROMPT = [
+  "You read business cards (namecards) and return structured contact data.",
+  "",
+  "Rules:",
+  "- Transcribe only what is on the card. Never invent, complete or \"correct\" a name, domain, phone number or address that is not printed. A missing field is null, not a guess.",
+  "- If two images are supplied they are the FRONT and BACK of the SAME card. Merge them into one record.",
+  "- Many Asian cards print the same details twice in two scripts. That is one person, not two. Put the Latin-script version in the main fields and the other-script version in other.name_alt / other.company_alt.",
+  "- If the back is genuinely different content (a map, a tagline, a product list, blank), take what is useful and ignore the rest.",
+  "- Job title goes in job_title, never in company. A department goes in other.department.",
+  "- Preserve phone numbers as printed but strip decorative separators; keep any leading + country code.",
+  "- Lowercase emails. Strip \"mailto:\".",
+  "- Prefer a mobile number for phone. A fax number only ever goes in other.fax, unless it is the sole number on the card.",
+  "- Set needs_review true if the image is blurred, cropped, glared, at a steep angle, or if you are unsure whether this is a namecard at all.",
+  "",
+  "Return the result by calling the extract_contact tool exactly once."
+].join("\n");
+
+function splitDataUrl(input, label){
+  var m = /^data:(image\/[a-z0-9.+-]+);base64,(.+)$/i.exec(String(input).trim());
+  if (!m) throw new Error(label + " image is not a usable JPEG.");
+  var mt = m[1].toLowerCase() === "image/jpg" ? "image/jpeg" : m[1].toLowerCase();
+  return {media_type: mt, data: m[2]};
+}
+
+function extractCard(key, front, back, hint){
+  var imgs = [splitDataUrl(front, "Front")];
+  if (back) imgs.push(splitDataUrl(back, "Back"));
+
+  return resolveModel(key).then(function(model){
+    var content = [];
+    imgs.forEach(function(img, i){
+      content.push({type:"text", text: i === 0 ? "FRONT of the card:" : "BACK of the same card:"});
+      content.push({type:"image", source:{type:"base64", media_type: img.media_type, data: img.data}});
+    });
+    content.push({type:"text", text: hint
+      ? "Context supplied by the collector (do not treat as card content): " + hint
+      : "Extract the contact now."});
+
+    var started = Date.now();
+    return fetch(ANTHROPIC + "/messages", {
+      method: "POST", headers: aHeaders(key),
+      body: JSON.stringify({
+        model: model, max_tokens: 1500, system: SYSTEM_PROMPT,
+        tools: [{name:"extract_contact", description:"Return the contact details found on the card.",
+                 input_schema: FIELD_SCHEMA}],
+        tool_choice: {type:"tool", name:"extract_contact"},
+        messages: [{role:"user", content: content}]
+      })
+    }).then(function(r){
+      if (r.status === 401) throw new Error("Anthropic rejected your API key. Update it in Settings.");
+      if (r.status === 429) throw new Error("Anthropic rate limit hit. Wait a moment and try again.");
+      if (r.status === 400) return r.text().then(function(t){
+        if (t.indexOf("credit") !== -1 || t.indexOf("billing") !== -1){
+          throw new Error("Your Anthropic account is out of credit. Top it up in the console.");
+        }
+        throw new Error("Anthropic rejected the request: " + t.slice(0, 200));
+      });
+      if (!r.ok) return r.text().then(function(t){
+        throw new Error("Anthropic error (HTTP " + r.status + "): " + t.slice(0, 200));
+      });
+      return r.json();
+    }).then(function(body){
+      var block = (body.content || []).filter(function(b){ return b.type === "tool_use"; })[0];
+      if (!block) throw new Error("The model did not return structured fields. Try again.");
+      return {fields: normalise(block.input), raw: block.input, model: model,
+              ms: Date.now() - started, sides: imgs.length, usage: body.usage || null};
+    });
+  });
+}
+
+function clean(v){
+  if (typeof v !== "string") return null;
+  var s = v.trim().replace(/\s+/g, " ");
+  if (!s || /^(n\/?a|none|null|unknown|-)$/i.test(s)) return null;
+  return s;
+}
+
+function normalise(raw){
+  raw = raw || {};
+  var email = clean(raw.email);
+  email = email ? email.toLowerCase().replace(/^mailto:/, "") : null;
+  var website = clean(raw.website);
+  if (website && !/^https?:\/\//i.test(website)) website = "https://" + website.replace(/^\/+/, "");
+  var conf = String(raw.confidence || "").toLowerCase();
+  if (["high","medium","low"].indexOf(conf) === -1) conf = "low";
+  return {
+    full_name: clean(raw.full_name), job_title: clean(raw.job_title), company: clean(raw.company),
+    phone: clean(raw.phone), phone_alt: clean(raw.phone_alt), email: email,
+    website: website, address: clean(raw.address),
+    other: (raw.other && typeof raw.other === "object") ? raw.other : null,
+    confidence: conf, needs_review: raw.needs_review === true || conf === "low"
+  };
+}
+
+/* ---------------- images ---------------- */
+
 function fileToJpeg(file, maxEdge, quality){
-  maxEdge = maxEdge || 1600;
-  quality = quality || 0.82;
+  maxEdge = maxEdge || 1600; quality = quality || 0.82;
   return loadBitmap(file).then(function(bmp){
-    var w = bmp.width, h = bmp.height;
-    var scale = Math.min(1, maxEdge / Math.max(w, h));
-    var cw = Math.round(w * scale), ch = Math.round(h * scale);
+    var scale = Math.min(1, maxEdge / Math.max(bmp.width, bmp.height));
+    var cw = Math.round(bmp.width * scale), ch = Math.round(bmp.height * scale);
     var c = document.createElement("canvas");
     c.width = cw; c.height = ch;
     var ctx = c.getContext("2d");
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, cw, ch);
+    ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, cw, ch);
     ctx.drawImage(bmp, 0, 0, cw, ch);
     if (bmp.close) bmp.close();
     return c.toDataURL("image/jpeg", quality);
@@ -474,9 +695,8 @@ function fileToJpeg(file, maxEdge, quality){
 function loadBitmap(file){
   if (window.createImageBitmap){
     try {
-      return createImageBitmap(file, {imageOrientation: "from-image"}).catch(function(){
-        return loadViaImg(file);
-      });
+      return createImageBitmap(file, {imageOrientation:"from-image"})
+        .catch(function(){ return loadViaImg(file); });
     } catch(e){ /* fall through */ }
   }
   return loadViaImg(file);
@@ -484,8 +704,7 @@ function loadBitmap(file){
 
 function loadViaImg(file){
   return new Promise(function(res, rej){
-    var url = URL.createObjectURL(file);
-    var img = new Image();
+    var url = URL.createObjectURL(file), img = new Image();
     img.onload = function(){ URL.revokeObjectURL(url); res(img); };
     img.onerror = function(){ URL.revokeObjectURL(url); rej(new Error("Could not read that image.")); };
     img.src = url;
@@ -493,10 +712,8 @@ function loadViaImg(file){
 }
 
 function dataUrlToBlob(dataUrl){
-  var parts = dataUrl.split(",");
-  var mime = /:(.*?);/.exec(parts[0])[1];
-  var bin = atob(parts[1]);
-  var arr = new Uint8Array(bin.length);
+  var parts = dataUrl.split(","), mime = /:(.*?);/.exec(parts[0])[1];
+  var bin = atob(parts[1]), arr = new Uint8Array(bin.length);
   for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
   return new Blob([arr], {type: mime});
 }
@@ -504,13 +721,10 @@ function dataUrlToBlob(dataUrl){
 /* ---------------- capture ---------------- */
 
 function paintShot(which){
-  var el = $("shot-" + which);
-  var data = shots[which];
+  var el = $("shot-" + which), data = shots[which];
   if (!data){
     el.className = "shot";
-    el.innerHTML = which === "front"
-      ? ICON_FRONT_TILE
-      : ICON_BACK_TILE;
+    el.innerHTML = which === "front" ? TILE_FRONT : TILE_BACK;
   } else {
     el.className = "shot filled";
     el.innerHTML = '<img src="' + data + '" alt="">' +
@@ -520,11 +734,7 @@ function paintShot(which){
   $("btn-read").disabled = !shots.front;
 }
 
-function pickImage(which){
-  side = which;
-  $("filepick").value = "";
-  $("filepick").click();
-}
+function pickImage(which){ side = which; $("filepick").value = ""; $("filepick").click(); }
 
 function resetCapture(){
   shots = {front:null, back:null};
@@ -533,35 +743,17 @@ function resetCapture(){
   pending = null;
 }
 
-/* ---------------- extraction ---------------- */
-
 function readCard(){
+  var key = apiKey();
+  if (!key){ screenTo("key"); return; }
   var ev = $("event-input").value.trim();
   var note = $("note-input").value.trim();
   var capturedAt = new Date().toISOString();
 
   show("working");
-
-  api(FN + "/extract-namecard", {
-    method: "POST",
-    body: JSON.stringify({front: shots.front, back: shots.back, hint: ev})
-  }).then(function(r){
-    return r.json().then(function(j){ return {status: r.status, body: j}; });
-  }).then(function(res){
-    if (!res.body || !res.body.ok){
-      throw new Error((res.body && res.body.error) || ("Extraction failed (HTTP " + res.status + ")"));
-    }
-    pending = {
-      fields: res.body.fields,
-      raw: res.body.raw,
-      model: res.body.model,
-      provider: res.body.provider,
-      ms: res.body.ms,
-      sides: res.body.sides,
-      event_context: ev || null,
-      capture_note: note || null,
-      captured_at: capturedAt
-    };
+  extractCard(key, shots.front, shots.back, ev).then(function(out){
+    pending = {fields: out.fields, raw: out.raw, model: out.model, ms: out.ms, sides: out.sides,
+               event_context: ev || null, capture_note: note || null, captured_at: capturedAt};
     fillReview(pending);
     show("review");
   }).catch(function(e){
@@ -578,22 +770,17 @@ function fillReview(p){
   $("f-capture_note").value = p.capture_note || "";
   $("rv-title").textContent = f.full_name || "Unnamed contact";
 
-  var conf = f.confidence || "low";
   var chip = $("rv-chip");
-  chip.className = "chip " + conf;
-  chip.textContent = conf;
+  chip.className = "chip " + f.confidence;
+  chip.textContent = f.confidence;
 
-  $("rv-prov").textContent = (p.sides === 2 ? "Both sides read" : "Front read") +
-    " · " + (p.model || "model") + " · " + Math.round((p.ms || 0) / 100) / 10 + "s";
+  $("rv-prov").textContent = (p.sides === 2 ? "Both sides read" : "Front read") + " · " +
+    p.model + " · " + Math.round(p.ms / 100) / 10 + "s";
 
   var t = $("rv-thumbs");
   t.innerHTML = "";
   ["front","back"].forEach(function(s){
-    if (shots[s]){
-      var i = document.createElement("img");
-      i.src = shots[s]; i.alt = s;
-      t.appendChild(i);
-    }
+    if (shots[s]){ var i = document.createElement("img"); i.src = shots[s]; i.alt = s; t.appendChild(i); }
   });
 
   var when = new Date(p.captured_at);
@@ -601,18 +788,13 @@ function fillReview(p){
     when.toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"}) + ", " +
     when.toLocaleTimeString(undefined, {hour:"numeric", minute:"2-digit"});
 
-  var other = f.other;
-  var box = $("rv-other");
+  var box = $("rv-other"), other = f.other;
   if (other && Object.keys(other).length){
     box.classList.remove("hidden");
     box.innerHTML = "<b>Also on the card:</b> " + esc(Object.keys(other).map(function(k){
       return k.replace(/_/g, " ") + ": " + other[k];
     }).join(" · "));
-  } else {
-    box.classList.add("hidden");
-  }
-
-  $("btn-another").classList.remove("hidden");
+  } else { box.classList.add("hidden"); }
 }
 
 /* ---------------- saving ---------------- */
@@ -620,55 +802,48 @@ function fillReview(p){
 function uploadShot(userId, id, which){
   if (!shots[which]) return Promise.resolve(null);
   var path = userId + "/" + id + "-" + which + ".jpg";
-  return api(STORE + "/object/" + "namecards/" + path, {
-    method: "POST",
-    headers: {"Content-Type": "image/jpeg", "x-upsert": "true"},
+  return api(STORE + "/object/namecards/" + path, {
+    method: "POST", headers: {"Content-Type":"image/jpeg", "x-upsert":"true"},
     body: dataUrlToBlob(shots[which])
-  }).then(function(r){
-    return r.ok ? path : null;
-  }).catch(function(){ return null; });
+  }).then(function(r){ return r.ok ? path : null; }).catch(function(){ return null; });
+}
+
+function uuid(){
+  if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c){
+    var r = Math.random() * 16 | 0;
+    return (c === "x" ? r : (r & 3 | 8)).toString(16);
+  });
 }
 
 function saveContact(andAnother){
   if (!pending) return;
   var btn = andAnother ? $("btn-another") : $("btn-save");
-  var label = btn.textContent;
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>';
+  busy(btn, true);
 
-  var userId = session.user.id;
-  var id = (crypto.randomUUID ? crypto.randomUUID()
-    : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c){
-        var r = Math.random() * 16 | 0;
-        return (c === "x" ? r : (r & 3 | 8)).toString(16);
-      }));
-
+  var userId = session.user.id, id = uuid();
   Promise.all([uploadShot(userId, id, "front"), uploadShot(userId, id, "back")])
     .then(function(paths){
-      var row = {
-        id: id,
-        user_id: userId,
-        full_name: $("f-full_name").value.trim() || null,
-        job_title: $("f-job_title").value.trim() || null,
-        company: $("f-company").value.trim() || null,
-        phone: $("f-phone").value.trim() || null,
-        phone_alt: $("f-phone_alt").value.trim() || null,
-        email: ($("f-email").value.trim() || "").toLowerCase() || null,
-        website: $("f-website").value.trim() || null,
-        address: $("f-address").value.trim() || null,
-        event_context: pending.event_context,
-        capture_note: $("f-capture_note").value.trim() || null,
-        captured_at: pending.captured_at,
-        front_image_path: paths[0],
-        back_image_path: paths[1],
-        raw_extraction: {fields: pending.raw, model: pending.model, provider: pending.provider, sides: pending.sides},
-        extraction_confidence: pending.fields.confidence,
-        needs_review: !!pending.fields.needs_review
-      };
       return api(REST + "/contacts", {
-        method: "POST",
-        headers: {"Prefer": "return=representation"},
-        body: JSON.stringify(row)
+        method: "POST", headers: {"Prefer":"return=representation"},
+        body: JSON.stringify({
+          id: id, user_id: userId,
+          full_name: $("f-full_name").value.trim() || null,
+          job_title: $("f-job_title").value.trim() || null,
+          company: $("f-company").value.trim() || null,
+          phone: $("f-phone").value.trim() || null,
+          phone_alt: $("f-phone_alt").value.trim() || null,
+          email: ($("f-email").value.trim() || "").toLowerCase() || null,
+          website: $("f-website").value.trim() || null,
+          address: $("f-address").value.trim() || null,
+          event_context: pending.event_context,
+          capture_note: $("f-capture_note").value.trim() || null,
+          captured_at: pending.captured_at,
+          front_image_path: paths[0], back_image_path: paths[1],
+          raw_extraction: {fields: pending.raw, model: pending.model, sides: pending.sides},
+          extraction_confidence: pending.fields.confidence,
+          needs_review: !!pending.fields.needs_review
+        })
       });
     })
     .then(function(r){
@@ -683,10 +858,7 @@ function saveContact(andAnother){
       else { renderList(); show("list"); }
     })
     .catch(function(e){ toast(e.message, true); })
-    .finally(function(){
-      btn.disabled = false;
-      btn.textContent = label;
-    });
+    .finally(function(){ busy(btn, false); });
 }
 
 /* ---------------- list ---------------- */
@@ -701,7 +873,7 @@ function matches(c, q){
   if (!q) return true;
   var hay = [c.full_name, c.job_title, c.company, c.email, c.phone, c.phone_alt,
              c.website, c.address, c.event_context, c.capture_note].join(" ").toLowerCase();
-  return q.split(/\s+/).every(function(term){ return hay.indexOf(term) !== -1; });
+  return q.split(/\s+/).every(function(t){ return hay.indexOf(t) !== -1; });
 }
 
 function renderList(){
@@ -712,10 +884,10 @@ function renderList(){
 
   var body = $("list-body");
   if (!rows.length){
-    body.innerHTML = '<div class="empty"><div class="glyph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><circle cx="8" cy="11" r="2"/><path d="M14 10h4M14 14h4"/></svg></div><h3>' +
-      (contacts.length ? "Nothing matches that" : "No cards yet") + '</h3><p>' +
+    body.innerHTML = '<div class="empty"><div class="glyph">' + ICON_EMPTY + '</div><h3>' +
+      (contacts.length ? "Nothing matches that" : "No cards yet") + "</h3><p>" +
       (contacts.length ? "Try a company or event name." : "Shoot your first card from the Capture tab.") +
-      '</p></div>';
+      "</p></div>";
     return;
   }
 
@@ -729,13 +901,13 @@ function renderList(){
   var html = "";
   order.forEach(function(g){
     html += '<div class="grouphead"><span class="g">' + esc(g) + '</span><span class="n">' +
-      groups[g].length + '</span></div>';
+      groups[g].length + "</span></div>";
     groups[g].forEach(function(c){
       html += '<button class="row" data-id="' + c.id + '">' +
-        '<span class="mono">' + esc(initials(c.full_name)) + '</span>' +
-        '<span class="meta"><span class="nm">' + esc(c.full_name || "Unnamed") + '</span>' +
+        '<span class="mono-av">' + esc(initials(c.full_name)) + "</span>" +
+        '<span class="meta"><span class="nm">' + esc(c.full_name || "Unnamed") + "</span>" +
         '<span class="sub">' + esc([c.job_title, c.company].filter(Boolean).join(" · ") ||
-          fmtDate(c.captured_at)) + '</span></span>' +
+          fmtDate(c.captured_at)) + "</span></span>" +
         (c.needs_review ? '<span class="flag" title="Needs review"></span>' : "") +
         "</button>";
     });
@@ -743,23 +915,18 @@ function renderList(){
   body.innerHTML = html;
 }
 
-/* ---------------- detail sheet ---------------- */
+/* ---------------- detail + edit ---------------- */
 
 function openSheet(html){
   $("sheet-body").innerHTML = html;
   $("sheet").classList.add("on");
   $("scrim").classList.add("on");
 }
-
-function closeSheet(){
-  $("sheet").classList.remove("on");
-  $("scrim").classList.remove("on");
-}
+function closeSheet(){ $("sheet").classList.remove("on"); $("scrim").classList.remove("on"); }
 
 function showDetail(id){
   var c = contacts.filter(function(x){ return x.id === id; })[0];
   if (!c) return;
-
   var when = new Date(c.captured_at);
   var origin = (c.event_context || "No event recorded") + " · " +
     when.toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"});
@@ -767,8 +934,9 @@ function showDetail(id){
   var rows = "";
   function item(k, v, href){
     if (!v) return;
-    if (href) rows += '<a href="' + esc(href) + '"><span class="k">' + k + '</span><span class="v">' + esc(v) + "</span></a>";
-    else rows += '<div class="item"><span class="k">' + k + '</span><span class="v">' + esc(v) + "</span></div>";
+    rows += href
+      ? '<a href="' + esc(href) + '"><span class="k">' + k + '</span><span class="v">' + esc(v) + "</span></a>"
+      : '<div class="item"><span class="k">' + k + '</span><span class="v">' + esc(v) + "</span></div>";
   }
   item("Phone", c.phone, "tel:" + String(c.phone || "").replace(/[^+\d]/g, ""));
   item("Phone 2", c.phone_alt, "tel:" + String(c.phone_alt || "").replace(/[^+\d]/g, ""));
@@ -800,7 +968,7 @@ function showEdit(id){
     html += '<div class="field"><label>' + f[1] + '</label><input id="e-' + f[0] +
       '" value="' + esc(c[f[0]] || "") + '"></div>';
   });
-  html += '<div class="btnrow"><button class="btn ghost" data-cancel="1">Cancel</button>' +
+  html += '<div class="btnrow"><button class="btn ghost" data-back="' + c.id + '">Cancel</button>' +
           '<button class="btn primary" data-savedit="' + c.id + '">Save changes</button></div>';
   openSheet(html);
 }
@@ -814,22 +982,18 @@ function saveEdit(id){
   });
   patch.needs_review = false;
   api(REST + "/contacts?id=eq." + id, {
-    method: "PATCH",
-    headers: {"Prefer": "return=representation"},
-    body: JSON.stringify(patch)
+    method: "PATCH", headers: {"Prefer":"return=representation"}, body: JSON.stringify(patch)
   }).then(function(r){
     if (!r.ok) throw new Error("Could not save changes.");
     return r.json();
   }).then(function(rows){
-    for (var i = 0; i < contacts.length; i++){
-      if (contacts[i].id === id) contacts[i] = rows[0];
-    }
+    for (var i = 0; i < contacts.length; i++) if (contacts[i].id === id) contacts[i] = rows[0];
     closeSheet(); renderList(); toast("Updated");
   }).catch(function(e){ toast(e.message, true); });
 }
 
 function deleteContact(id){
-  api(REST + "/contacts?id=eq." + id, {method: "DELETE"}).then(function(r){
+  api(REST + "/contacts?id=eq." + id, {method:"DELETE"}).then(function(r){
     if (!r.ok) throw new Error("Could not delete.");
     contacts = contacts.filter(function(c){ return c.id !== id; });
     closeSheet(); renderList(); toast("Deleted");
@@ -839,13 +1003,9 @@ function deleteContact(id){
 /* ---------------- vCard ---------------- */
 
 function vFold(line){
-  /* RFC 6350 says fold at 75 octets; phone contact apps are tolerant, but be correct. */
   if (line.length <= 74) return line;
   var out = line.slice(0, 74), rest = line.slice(74);
-  while (rest.length){
-    out += "\r\n " + rest.slice(0, 73);
-    rest = rest.slice(73);
-  }
+  while (rest.length){ out += "\r\n " + rest.slice(0, 73); rest = rest.slice(73); }
   return out;
 }
 
@@ -859,7 +1019,6 @@ function toVCard(c){
   var parts = name.split(/\s+/);
   var last = parts.length > 1 ? parts.pop() : "";
   var first = parts.join(" ");
-
   var when = new Date(c.captured_at);
   var noteBits = [];
   if (c.event_context) noteBits.push("Met at " + c.event_context);
@@ -883,58 +1042,16 @@ function toVCard(c){
 }
 
 function downloadVcf(text, filename){
-  var blob = new Blob([text], {type: "text/vcard;charset=utf-8"});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement("a");
+  var blob = new Blob([text], {type:"text/vcard;charset=utf-8"});
+  var url = URL.createObjectURL(blob), a = document.createElement("a");
   a.href = url; a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(function(){ URL.revokeObjectURL(url); }, 3000);
 }
 
 function safeName(s){
   return String(s || "contact").replace(/[^\w\-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "contact";
 }
-
-/* ---------------- settings ---------------- */
-
-function showSettings(){
-  openSheet(
-    '<div class="detail-name">Settings</div>' +
-    '<div class="detail-sub">' + esc(session.user.email) + "</div>" +
-    '<div class="dl">' +
-      '<div class="item"><span class="k">Cards</span><span class="v">' + contacts.length + "</span></div>" +
-      '<div class="item"><span class="k">Event</span><span class="v">' +
-        esc($("event-input").value.trim() || "not set") + "</span></div>" +
-      '<div class="item"><span class="k">Reader</span><span class="v" id="diag-v">checking…</span></div>' +
-    "</div>" +
-    '<button class="btn ghost" style="margin-top:14px" data-export="1">Export all contacts as .vcf</button>' +
-    '<button class="btn quiet" style="margin-top:6px" data-signout="1">Sign out</button>'
-  );
-  api(FN + "/extract-namecard?diag=1").then(function(r){ return r.json(); }).then(function(j){
-    var el = $("diag-v");
-    if (!el) return;
-    el.textContent = j.ok ? (j.provider + " · " + j.model) : "not configured";
-    el.style.color = j.ok ? "var(--accent)" : "var(--danger)";
-  }).catch(function(){
-    var el = $("diag-v");
-    if (el){ el.textContent = "unreachable"; el.style.color = "var(--danger)"; }
-  });
-}
-
-function checkKey(){
-  api(FN + "/extract-namecard?diag=1").then(function(r){ return r.json(); }).then(function(j){
-    var b = $("key-banner");
-    if (j && j.ok){ b.classList.add("hidden"); return; }
-    b.classList.remove("hidden");
-    b.innerHTML = "<b>The card reader has no API key yet.</b> Capture still works, but nothing " +
-      "will be extracted until an <code>ANTHROPIC_API_KEY</code> secret is added to this " +
-      "Supabase project's Edge Functions.";
-  }).catch(function(){});
-}
-
-/* ---------------- export all ---------------- */
 
 function exportAll(){
   var q = $("search").value.trim().toLowerCase();
@@ -945,44 +1062,296 @@ function exportAll(){
   toast(rows.length + " contacts exported");
 }
 
-/* ---------------- wiring ---------------- */
+/* ---------------- admin ---------------- */
 
-function boot(){
-  $("login").classList.add("hidden");
-  $("app").classList.remove("hidden");
-  try { $("event-input").value = localStorage.getItem(LS_EVENT) || ""; } catch(e){}
-  show("capture");
-  loadContacts();
-  checkKey();
+function loadAdmin(){
+  if (!profile || !profile.is_admin) return Promise.resolve();
+  return api(REST + "/profiles?select=*&order=requested_at.desc")
+    .then(function(r){ return r.ok ? r.json() : []; })
+    .then(function(rows){
+      renderAdmin(rows || []);
+      var n = (rows || []).filter(function(p){ return p.status === "pending"; }).length;
+      var b = $("admin-badge");
+      b.textContent = n;
+      b.classList.toggle("hidden", n === 0);
+    });
 }
 
-function doLogin(){
-  var email = $("li-email").value.trim();
-  var pass = $("li-pass").value;
-  var btn = $("li-go");
-  var err = $("li-err");
+function renderAdmin(rows){
+  var body = $("admin-body");
+  if (!rows.length){ body.innerHTML = '<div class="empty"><p>Nobody has signed up yet.</p></div>'; return; }
+
+  var pend = rows.filter(function(p){ return p.status === "pending"; });
+  var rest = rows.filter(function(p){ return p.status !== "pending"; });
+  var html = "";
+
+  if (pend.length){
+    html += '<div class="grouphead"><span class="g">Waiting</span><span class="n">' + pend.length + "</span></div>";
+    pend.forEach(function(p){
+      html += '<div class="arow"><span class="mono-av">' + esc(initials(p.full_name || p.email)) + "</span>" +
+        '<span class="who"><span class="e">' + esc(p.email || "unknown") + "</span>" +
+        '<span class="m">' + esc(p.full_name || "no name given") + " · " + fmtDate(p.requested_at) + "</span></span>" +
+        '<span class="acts"><button class="btn ghost small" data-reject="' + p.id + '">Reject</button>' +
+        '<button class="btn primary small" data-approve="' + p.id + '">Approve</button></span></div>';
+    });
+  }
+
+  if (rest.length){
+    html += '<div class="grouphead"><span class="g">Decided</span><span class="n">' + rest.length + "</span></div>";
+    rest.forEach(function(p){
+      html += '<div class="arow"><span class="mono-av">' + esc(initials(p.full_name || p.email)) + "</span>" +
+        '<span class="who"><span class="e">' + esc(p.email || "unknown") +
+        (p.is_admin ? ' <span class="chip approved">admin</span>' : "") + "</span>" +
+        '<span class="m">' + esc(p.full_name || "no name given") + "</span></span>" +
+        '<span class="acts"><span class="chip ' + esc(p.status) + '">' + esc(p.status) + "</span>" +
+        (p.is_admin ? "" : '<button class="btn ghost small" data-' +
+          (p.status === "approved" ? "reject" : "approve") + '="' + p.id + '">' +
+          (p.status === "approved" ? "Revoke" : "Approve") + "</button>") +
+        "</span></div>";
+    });
+  }
+  body.innerHTML = html;
+}
+
+function decide(id, status){
+  api(REST + "/profiles?id=eq." + id, {
+    method: "PATCH", headers: {"Prefer":"return=representation"},
+    body: JSON.stringify({status: status, decided_at: new Date().toISOString(),
+                          decided_by: session.user.id})
+  }).then(function(r){
+    if (!r.ok) return r.text().then(function(t){ throw new Error("Could not update: " + t.slice(0, 140)); });
+    return loadAdmin();
+  }).then(function(){
+    toast(status === "approved" ? "Approved" : "Access removed");
+  }).catch(function(e){ toast(e.message, true); });
+}
+
+/* ---------------- settings ---------------- */
+
+function showSettings(){
+  var key = apiKey();
+  var masked = key ? key.slice(0, 11) + "…" + key.slice(-4) : "not set";
+  openSheet(
+    '<div class="detail-name">Settings</div>' +
+    '<div class="detail-sub">' + esc(session.user.email) +
+      (profile && profile.is_admin ? ' · <span class="chip approved">admin</span>' : "") + "</div>" +
+    '<div class="dl">' +
+      '<div class="item"><span class="k">Cards</span><span class="v">' + contacts.length + "</span></div>" +
+      '<div class="item"><span class="k">Event</span><span class="v">' +
+        esc($("event-input").value.trim() || "not set") + "</span></div>" +
+      '<div class="item"><span class="k">API key</span><span class="v" style="font-family:ui-monospace,monospace;font-size:13px">' +
+        esc(masked) + "</span></div>" +
+      '<div class="item"><span class="k">Model</span><span class="v">' + esc(ls(LS_MODEL) || "not resolved yet") + "</span></div>" +
+    "</div>" +
+    '<p class="hint">Your API key is held in this browser only. Clearing site data, or opening the app on another device, means entering it again.</p>' +
+    '<div class="btnrow"><button class="btn ghost" data-changekey="1">Change key</button>' +
+    '<button class="btn ghost" data-changepw="1">Password</button></div>' +
+    '<button class="btn ghost" style="margin-top:10px" data-export="1">Export all contacts as .vcf</button>' +
+    '<button class="btn quiet" style="margin-top:6px" data-signout="1">Sign out</button>'
+  );
+}
+
+function showChangePw(){
+  openSheet(
+    '<div class="detail-name">Change password</div>' +
+    '<p class="hint">At least 6 characters. You stay signed in on this device.</p>' +
+    '<div class="field"><label for="pw-new">New password</label>' +
+      '<input id="pw-new" type="password" autocomplete="new-password"></div>' +
+    '<div class="field"><label for="pw-again">Repeat it</label>' +
+      '<input id="pw-again" type="password" autocomplete="new-password"></div>' +
+    '<div id="pw-err" class="err hidden"></div>' +
+    '<div class="btnrow"><button class="btn ghost" data-settings="1">Cancel</button>' +
+    '<button class="btn primary" data-savepw="1">Change it</button></div>'
+  );
+}
+
+function savePw(btn){
+  var a = $("pw-new").value, b = $("pw-again").value, err = $("pw-err");
   err.classList.add("hidden");
-  if (!email || !pass){ err.textContent = "Email and password, please."; err.classList.remove("hidden"); return; }
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>';
-  fetch(AUTH + "/token?grant_type=password", {
-    method: "POST",
-    headers: {"apikey": SB_KEY, "Content-Type": "application/json"},
-    body: JSON.stringify({email: email, password: pass})
-  }).then(function(r){ return r.json().then(function(j){ return {ok: r.ok, j: j}; }); })
+  function fail(m){ err.textContent = m; err.classList.remove("hidden"); }
+  if (a.length < 6) return fail("At least 6 characters.");
+  if (a !== b) return fail("Those two do not match.");
+  busy(btn, true);
+  api(AUTH + "/user", {method:"PUT", body: JSON.stringify({password: a})})
+    .then(function(r){ return r.json().then(function(j){ return {ok: r.ok, j: j}; }); })
     .then(function(res){
-      if (!res.ok || !res.j.access_token){
-        throw new Error(res.j.error_description || res.j.msg || "Those details did not work.");
+      if (!res.ok) throw new Error(res.j.msg || res.j.error_description || "Could not change it.");
+      closeSheet(); toast("Password changed");
+    })
+    .catch(function(e){ fail(e.message); })
+    .finally(function(){ busy(btn, false, "Change it"); });
+}
+
+function showChangeKey(){
+  openSheet(
+    '<div class="detail-name">Anthropic API key</div>' +
+    '<p class="hint">Stored in this browser only, sent straight to Anthropic. Get one at ' +
+    '<a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">console.anthropic.com/settings/keys</a>.</p>' +
+    '<div class="field"><label for="ck-input">New key</label>' +
+      '<input id="ck-input" class="mono" type="password" placeholder="sk-ant-..." autocapitalize="off" autocomplete="off" spellcheck="false"></div>' +
+    '<div id="ck-err" class="err hidden"></div>' +
+    '<div class="btnrow"><button class="btn ghost" data-settings="1">Cancel</button>' +
+    '<button class="btn primary" data-savekey="1">Check and save</button></div>' +
+    '<button class="btn danger" style="margin-top:10px" data-clearkey="1">Remove key from this device</button>'
+  );
+}
+
+function saveKeyFrom(inputId, errId, btn, onDone){
+  var val = $(inputId).value.trim(), err = $(errId);
+  err.classList.add("hidden");
+  function fail(m){ err.textContent = m; err.classList.remove("hidden"); busy(btn, false); }
+  if (!val) return fail("Paste your key first.");
+  if (val.indexOf("sk-ant-") !== 0){
+    return fail("An Anthropic key starts with sk-ant-. Check you copied the whole thing.");
+  }
+  busy(btn, true);
+  lsDel(LS_MODEL);
+  resolveModel(val, true).then(function(model){
+    ls(LS_KEY, val);
+    toast("Key saved · " + model);
+    onDone();
+  }).catch(function(e){
+    fail(e.message + " Nothing was saved.");
+  });
+}
+
+/* ---------------- auth screens ---------------- */
+
+function setAuthMode(mode){
+  authMode = mode;
+  $("seg-in").classList.toggle("on", mode === "in");
+  $("seg-up").classList.toggle("on", mode === "up");
+  $("au-name-wrap").classList.toggle("hidden", mode !== "up");
+  $("au-passhint").classList.toggle("hidden", mode !== "up");
+  $("au-go").textContent = mode === "in" ? "Sign in" : "Create account";
+  $("au-pass").setAttribute("autocomplete", mode === "in" ? "current-password" : "new-password");
+  $("au-err").classList.add("hidden");
+}
+
+function doAuth(){
+  var email = $("au-email").value.trim();
+  var pass = $("au-pass").value;
+  var name = $("au-name").value.trim();
+  var err = $("au-err"), btn = $("au-go");
+  err.classList.add("hidden");
+  function fail(m){ err.textContent = m; err.classList.remove("hidden");
+                    busy(btn, false, authMode === "in" ? "Sign in" : "Create account"); }
+  if (!email || !pass) return fail("Email and password, please.");
+  if (authMode === "up" && pass.length < 6) return fail("Password must be at least 6 characters.");
+
+  busy(btn, true);
+  var url = authMode === "in" ? AUTH + "/token?grant_type=password" : AUTH + "/signup";
+  var body = authMode === "in"
+    ? {email: email, password: pass}
+    : {email: email, password: pass, data: {full_name: name || null}};
+
+  fetch(url, {method:"POST", headers:{"apikey": SB_KEY, "Content-Type":"application/json"},
+              body: JSON.stringify(body)})
+    .then(function(r){ return r.json().then(function(j){ return {ok: r.ok, j: j}; }); })
+    .then(function(res){
+      if (!res.ok){
+        throw new Error(res.j.msg || res.j.error_description || res.j.error || "That did not work.");
+      }
+      if (!res.j.access_token){
+        /* signup succeeded but needs email confirmation */
+        busy(btn, false, "Create account");
+        profile = {status: "pending", email: email};
+        renderGate("confirm");
+        screenTo("gate");
+        return null;
       }
       saveSession(res.j);
-      boot();
+      return afterAuth();
     })
-    .catch(function(e){ err.textContent = e.message; err.classList.remove("hidden"); })
-    .finally(function(){ btn.disabled = false; btn.textContent = "Sign in"; });
+    .catch(function(e){ fail(e.message); });
 }
 
-$("li-go").addEventListener("click", doLogin);
-$("li-pass").addEventListener("keydown", function(e){ if (e.key === "Enter") doLogin(); });
+function renderGate(mode){
+  var k = $("gate-kicker"), t = $("gate-title"), b = $("gate-body");
+  if (mode === "rejected"){
+    k.textContent = "Access declined";
+    t.textContent = "This account cannot use the app";
+    b.textContent = "The administrator has not granted access to " + (profile && profile.email ? profile.email : "this account") +
+      ". If you think that is a mistake, get in touch with whoever sent you the link.";
+    $("gate-refresh").classList.add("hidden");
+  } else if (mode === "confirm"){
+    k.textContent = "Check your email";
+    t.textContent = "Confirm your address to finish signing up";
+    b.textContent = "We sent a confirmation link to " + (profile && profile.email ? profile.email : "your inbox") +
+      ". Click it, then sign in. After that the administrator still needs to approve you.";
+    $("gate-refresh").classList.add("hidden");
+  } else {
+    k.textContent = "Awaiting approval";
+    t.textContent = "Your request is with the administrator";
+    b.textContent = "You are signed in as " + (profile && profile.email ? profile.email : "this account") +
+      ", but the administrator has to approve the account before you can save contacts. " +
+      "This usually takes a little while. Tap Check again once you have been told you are in.";
+    $("gate-refresh").classList.remove("hidden");
+  }
+}
+
+function loadProfile(){
+  return api(REST + "/profiles?select=*&id=eq." + session.user.id)
+    .then(function(r){ return r.ok ? r.json() : []; })
+    .then(function(rows){ profile = (rows && rows[0]) || null; return profile; });
+}
+
+function afterAuth(){
+  return loadProfile().then(function(p){
+    if (!p){
+      /* the trigger should always have made one; treat absence as pending */
+      profile = {status:"pending", email: session.user.email};
+      renderGate("pending"); screenTo("gate"); return;
+    }
+    if (p.status === "rejected"){ renderGate("rejected"); screenTo("gate"); return; }
+    if (p.status !== "approved"){ renderGate("pending"); screenTo("gate"); return; }
+    if (!apiKey()){ screenTo("key"); return; }
+    return startApp();
+  });
+}
+
+function startApp(){
+  screenTo("app");
+  $("event-input").value = ls(LS_EVENT) || "";
+  resetCapture();
+  show("capture");
+  $("tab-admin").classList.toggle("hidden", !(profile && profile.is_admin));
+  var b = $("key-banner");
+  if (!apiKey()){
+    b.classList.remove("hidden");
+    b.innerHTML = "<b>No API key on this device.</b> Add one in Settings before reading a card.";
+  } else { b.classList.add("hidden"); }
+  loadContacts();
+  loadAdmin();
+}
+
+/* ---------------- wiring ---------------- */
+
+$("seg-in").addEventListener("click", function(){ setAuthMode("in"); });
+$("seg-up").addEventListener("click", function(){ setAuthMode("up"); });
+$("au-go").addEventListener("click", doAuth);
+$("au-pass").addEventListener("keydown", function(e){ if (e.key === "Enter") doAuth(); });
+
+$("gate-out").addEventListener("click", signOut);
+$("key-out").addEventListener("click", signOut);
+$("gate-refresh").addEventListener("click", function(){
+  var btn = $("gate-refresh");
+  busy(btn, true);
+  loadProfile().then(function(p){
+    busy(btn, false, "Check again");
+    if (p && p.status === "approved"){ toast("You are in"); afterAuth(); }
+    else if (p && p.status === "rejected"){ renderGate("rejected"); }
+    else toast("Still waiting on approval");
+  }).catch(function(){ busy(btn, false, "Check again"); toast("Could not check just now", true); });
+});
+
+$("key-save").addEventListener("click", function(){
+  saveKeyFrom("key-input", "key-err", $("key-save"), function(){
+    busy($("key-save"), false, "Check and save");
+    startApp();
+  });
+});
+$("key-input").addEventListener("keydown", function(e){ if (e.key === "Enter") $("key-save").click(); });
 
 $("shot-front").addEventListener("click", function(e){
   if (e.target.dataset.clear){ shots.front = null; paintShot("front"); return; }
@@ -996,17 +1365,14 @@ $("shot-back").addEventListener("click", function(e){
 $("filepick").addEventListener("change", function(e){
   var f = e.target.files && e.target.files[0];
   if (!f) return;
-  fileToJpeg(f).then(function(dataUrl){
-    shots[side] = dataUrl;
+  fileToJpeg(f).then(function(d){
+    shots[side] = d;
     paintShot(side);
     if (side === "front" && !shots.back) toast("Add the back, or read it now");
   }).catch(function(err){ toast(err.message || "Could not use that photo.", true); });
 });
 
-$("event-input").addEventListener("input", function(e){
-  try { localStorage.setItem(LS_EVENT, e.target.value); } catch(err){}
-});
-
+$("event-input").addEventListener("input", function(e){ ls(LS_EVENT, e.target.value); });
 $("btn-read").addEventListener("click", readCard);
 $("btn-save").addEventListener("click", function(){ saveContact(false); });
 $("btn-another").addEventListener("click", function(){ saveContact(true); });
@@ -1016,7 +1382,10 @@ $("btn-export-all").addEventListener("click", exportAll);
 $("search").addEventListener("input", renderList);
 
 document.querySelectorAll(".tab").forEach(function(b){
-  b.addEventListener("click", function(){ show(b.dataset.tab); });
+  b.addEventListener("click", function(){
+    show(b.dataset.tab);
+    if (b.dataset.tab === "admin") loadAdmin();
+  });
 });
 
 $("list-body").addEventListener("click", function(e){
@@ -1024,33 +1393,58 @@ $("list-body").addEventListener("click", function(e){
   if (row) showDetail(row.dataset.id);
 });
 
+$("admin-body").addEventListener("click", function(e){
+  var t = e.target.closest("[data-approve],[data-reject]");
+  if (!t) return;
+  if (t.dataset.approve) decide(t.dataset.approve, "approved");
+  else decide(t.dataset.reject, "rejected");
+});
+
 $("scrim").addEventListener("click", closeSheet);
 
 $("sheet-body").addEventListener("click", function(e){
-  var t = e.target.closest("[data-vcf],[data-edit],[data-del],[data-cancel],[data-savedit],[data-export],[data-signout]");
+  var t = e.target.closest("[data-vcf],[data-edit],[data-del],[data-back],[data-savedit]," +
+    "[data-export],[data-signout],[data-changepw],[data-savepw],[data-settings]," +
+    "[data-changekey],[data-savekey],[data-clearkey]");
   if (!t) return;
   var d = t.dataset;
   if (d.vcf){
     var c = contacts.filter(function(x){ return x.id === d.vcf; })[0];
     if (c){ downloadVcf(toVCard(c), safeName(c.full_name) + ".vcf"); toast("vCard saved"); }
-  } else if (d.edit){ showEdit(d.edit); }
-  else if (d.del){ deleteContact(d.del); }
-  else if (d.cancel){ showDetail_back(); }
-  else if (d.savedit){ saveEdit(d.savedit); }
+  }
+  else if (d.edit) showEdit(d.edit);
+  else if (d.del) deleteContact(d.del);
+  else if (d.back) showDetail(d.back);
+  else if (d.savedit) saveEdit(d.savedit);
   else if (d.export){ closeSheet(); exportAll(); }
-  else if (d.signout){ signOut(); }
+  else if (d.signout) signOut();
+  else if (d.settings) showSettings();
+  else if (d.changepw) showChangePw();
+  else if (d.savepw) savePw(t);
+  else if (d.changekey) showChangeKey();
+  else if (d.savekey){
+    saveKeyFrom("ck-input", "ck-err", t, function(){
+      busy(t, false, "Check and save");
+      closeSheet();
+      $("key-banner").classList.add("hidden");
+    });
+  }
+  else if (d.clearkey){
+    lsDel(LS_KEY); lsDel(LS_MODEL);
+    closeSheet();
+    toast("Key removed from this device");
+    startApp();
+  }
 });
-
-function showDetail_back(){ closeSheet(); }
 
 /* ---------------- start ---------------- */
 
+setAuthMode("in");
 if (loadSession() && session.access_token){
-  refreshSession().then(boot, function(){
-    $("login").classList.remove("hidden");
-  });
+  refreshSession().then(afterAuth, function(){ screenTo("auth"); })
+    .catch(function(){ screenTo("auth"); });
 } else {
-  $("login").classList.remove("hidden");
+  screenTo("auth");
 }
 
 })();
