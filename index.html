@@ -1300,8 +1300,25 @@ function doAuth(){
     .then(readBody)
     .then(function(res){
       if (!res.ok){
-        throw new Error(res.j.msg || res.j.error_description || res.j.error ||
-                        ("That did not work (HTTP " + res.status + ")."));
+        var m = res.j.msg || res.j.error_description || res.j.error ||
+                ("That did not work (HTTP " + res.status + ").");
+        /* GoTrue's own wording for these is terse to the point of being useless
+           to whoever is standing in front of the screen. */
+        if (/rate limit/i.test(m)){
+          throw new Error("Sign-ups are temporarily blocked: this project still sends a " +
+            "confirmation email on signup, and its mail allowance for the hour is used up. " +
+            "Ask the administrator to switch \u201cConfirm email\u201d off \u2014 approval is " +
+            "what controls access here, not the email. Nothing was created; try again later " +
+            "or once they have changed it.");
+        }
+        if (/already registered|already been registered/i.test(m)){
+          throw new Error("There is already an account with that email. Use Sign in instead, " +
+            "or ask the administrator whether it is still awaiting approval.");
+        }
+        if (/invalid login credentials/i.test(m)){
+          throw new Error("That email and password do not match an account.");
+        }
+        throw new Error(m);
       }
       if (!res.j.access_token){
         /* signup succeeded but needs email confirmation */
